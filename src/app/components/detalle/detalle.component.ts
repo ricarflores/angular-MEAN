@@ -16,11 +16,16 @@ export class DetalleComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.route.snapshot.paramMap.get('id'));
-    this.personajeServices.getPersonaje(this.route.snapshot.paramMap.get('id'))
-      .subscribe((personaje:any)=>{
-        console.log(personaje.data)
-        if(personaje && personaje.data) this.personajes = personaje.data
-    })
+    try{
+        this.personajeServices.getPersonaje(this.route.snapshot.paramMap.get('id'))
+                .subscribe((personaje:any)=>{
+                  console.log(personaje.data)
+                  if(personaje && personaje.data) this.personajes = personaje.data
+              })
+    }catch(e){
+      console.log(e)
+    }
+    
     //this.personaje = this.personajeServices.getPersonaje(this.route.snapshot.paramMap.get('id'))
     
   }
