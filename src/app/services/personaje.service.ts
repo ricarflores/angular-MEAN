@@ -1,48 +1,59 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http'
 import { Personaje } from "./../interfaces/personaje";
+import { map } from 'rxjs/operators'
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class PersonajeService {
   private personajes : Personaje [] = [
     {
-      id: 1,
-      personaje: "Tanjiro",
+      id: "1",
+      nombre: "Tanjiro",
       desc: "Personaje del anime Demon Slayer",
-      foto: "/assets/images/Tanjiro.webp"
+      foto: "/assets/images/Tanjiro.webp",
+      price:50
     },
     {
-      id: 2,
-      personaje: "Nezuko",
+      id: "2",
+      nombre: "Nezuko",
       desc: "Personaje del anime Demon Slayer",
-      foto: "/assets/images/nezuko.gif"
+      foto: "/assets/images/nezuko.gif",
+      price:20
     },
     {
-      id: 3,
-      personaje: "Nezuko",
+      id: "3",
+      nombre: "Nezuko",
       desc: "Personaje del anime Demon Slayer",
-      foto: "/assets/images/shinobu.gif"
+      foto: "/assets/images/shinobu.gif",
+      price:50
     }
-  ]
-  constructor() { }
-
+  ];
+  private baseUrl: string = "https://personajes.herokuapp.com/v1/personaje"
+  constructor(private _http:HttpClient) {
+  
+  }
   addPersonaje(personaje:Personaje)
   {
-    const id = (this.personajes) ? this.personajes.length : 1
-    personaje.id = id;
-    this.personajes.push(personaje)
+    return this._http.post(this.baseUrl,personaje)
   }
 
-  getPersonaje(id:Personaje["id"]){
-    return this.personajes.filter(personaje => personaje['id'] === id)[0]
+  getPersonaje(id){
+    return this._http.get(this.baseUrl+"/"+id)
+      .pipe(map( personaje => personaje))
   }
-  listPersonajes():Personaje[]{
-    return this.personajes;
+  listPersonajes(){
+    return this._http.get(this.baseUrl)
+      .pipe(map( personaje => personaje))
+    //return this.personajes;
   }
   updatePersonaje(personaje:Personaje){
     
   }
-  deletePersonaje(id:Personaje["id"]){
-    return this.personajes.splice(id-1,id)
+  deletePersonaje(_id:string){
+    console.log(_id)
+    return this._http.delete(this.baseUrl+"/"+_id);
   }
 }

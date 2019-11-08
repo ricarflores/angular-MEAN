@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute} from '@angular/router'
-import { Personaje } from './../../interfaces/personaje'
+import { Personaje } from "./../../interfaces/personaje";
 import { PersonajeService } from './../../services/personaje.service';
 @Component({
   selector: 'app-detalle',
@@ -9,12 +9,19 @@ import { PersonajeService } from './../../services/personaje.service';
 })
 export class DetalleComponent implements OnInit {
 
-  private personaje: Personaje
-  constructor(private route: ActivatedRoute, private personajeServices: PersonajeService) { }
+  private personajes: Personaje
+  constructor(private route: ActivatedRoute, private personajeServices: PersonajeService) { 
+    
+  }
 
   ngOnInit() {
-    
-    this.personaje = this.personajeServices.getPersonaje(Number(this.route.snapshot.paramMap.get('id')))
+    console.log(this.route.snapshot.paramMap.get('id'));
+    this.personajeServices.getPersonaje(this.route.snapshot.paramMap.get('id'))
+      .subscribe((personaje:any)=>{
+        console.log(personaje.data)
+        if(personaje && personaje.data) this.personajes = personaje.data
+    })
+    //this.personaje = this.personajeServices.getPersonaje(this.route.snapshot.paramMap.get('id'))
     
   }
 

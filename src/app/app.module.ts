@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
@@ -9,7 +10,8 @@ import { FormComponent } from './components/form/form.component';
 import { MainComponent } from './components/main/main.component'
 import { DetalleComponent } from './components/detalle/detalle.component'
 import { RooRoutingModule } from './routes.module';
-import { ModalComponent } from './components/modal/modal.component'
+import { ModalComponent } from './components/modal/modal.component';
+import { IngresarComponent } from './components/ingresar/ingresar.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,12 +21,14 @@ import { ModalComponent } from './components/modal/modal.component'
     FormComponent,
     DetalleComponent,
     MainComponent,
-    ModalComponent
+    ModalComponent,
+    IngresarComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    RooRoutingModule
+    RooRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

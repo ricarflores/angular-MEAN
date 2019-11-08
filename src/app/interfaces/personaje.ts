@@ -1,6 +1,7 @@
 export interface Personaje {
-    id?: number;
-    personaje: string;
+    id?: string;
+    nombre: string;
     desc: string;
     foto?: string;
+    price: number;
 }

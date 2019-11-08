@@ -1,13 +1,23 @@
 <form [formGroup]="checkoutForm" (ngSubmit)="addPersonaje(checkoutForm.value)">
     <div class="form-group">
         <label for="exampleInputEmail1">Personaje</label>
-        <input name="personaje" type="text" class="form-control" id="" formControlName="personaje"
+        <input name="nombre" type="text" class="form-control" id="" formControlName="nombre"
             placeholder="Nombre de Personaje">
     </div>
     <div class="form-group">
         <label for="exampleInputPassword1">Descripsion</label>
         <input name="desc" type="text" class="form-control" id="" formControlName="descripcion"
             placeholder="Descripsion">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Imagen</label>
+        <input name="foto" type="text" class="form-control" id="" formControlName="foto"
+            placeholder="foto">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Precio</label>
+        <input name="price" type="number" class="form-control" id="" formControlName="price"
+            placeholder="precio">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
     <button type="button" name="button" class="btn btn-primary" (click)="triggerModal">Actualizar</button>

@@ -12,18 +12,23 @@ export class UsuarioComponent implements OnInit {
   private personajes: Personaje[]
   private checkoutForm
   constructor(private personajeService: PersonajeService, private formBuilder: FormBuilder) {
-    this.personajes = personajeService.listPersonajes()
-    this.checkoutForm = this.formBuilder.group({
-      id:'',
-      personaje: '',
-      descripcion: ''
-    })
+    console.log("constructor");
+    this.personajeService.listPersonajes()
+      .subscribe((personajes:any)=>{
+        if(!personajes.error) this.personajes = personajes.data
+      })
   }
   ngOnInit() {
 
   }
   deletePersonaje(id) {
-    this.personajeService.deletePersonaje(id);
+    //console.log(id);
+    this.personajeService.deletePersonaje(id)
+      .subscribe(
+        ( data ) => { console.log(data) },
+        ( err ) => { console.log(err) },
+        ( ) => {}
+      )
   }
   
 

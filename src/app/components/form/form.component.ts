@@ -15,19 +15,28 @@ export class FormComponent implements OnInit {
   constructor(private personajeService: PersonajeService, private formBuilder: FormBuilder) { 
 
     this.checkoutForm = this.formBuilder.group({
-      personaje:'',
-      descripcion:''
+      nombre:'',
+      descripcion:'',
+      foto:'',
+      price: ''
     })
   }
 
   ngOnInit() {
   }
   addPersonaje(){
-    const personajeNew: Personaje={
-        personaje:this.checkoutForm.value.personaje,
-        desc:this.checkoutForm.value.descripcion
+    const personajeNew: Personaje= {
+        nombre:this.checkoutForm.value.nombre,
+        desc:this.checkoutForm.value.descripcion,
+        foto:this.checkoutForm.value.foto,
+        price:this.checkoutForm.value.price
     }
     this.personajeService.addPersonaje(personajeNew)
+      .subscribe(
+        (data) => { console.log (data)},
+        (err) => { console.log(err)},
+        () => {  }
+      )
   }
   triggerModal(){
      this.modal = true;
