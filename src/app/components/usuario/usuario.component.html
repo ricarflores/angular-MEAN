@@ -1,0 +1,10 @@
+<div class="card-colums" style="width: 18rem;" *ngFor="let personaje of personajes">
+    <img [src]="personaje.foto" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">{{personaje.personaje}}</h5>
+        <p class="card-text">{{personaje.desc}}</p>
+        <a [routerLink]="['detalles', personaje.id]" class="btn btn-primary">Detalles</a>
+        <button (click)="deletePersonaje(personaje.id)" class="btn btn-danger">Borrar</button>
+        <button class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">Editar</button>
+    </div>
+</div>
