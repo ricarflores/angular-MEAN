@@ -21,7 +21,7 @@ export class DetalleComponent implements OnInit {
       this.personajeServices.getPersonaje(this.route.snapshot.paramMap.get('id'))
         .subscribe((personaje: any) => {
           
-          if (personaje && personaje.data) this.personajes = personaje.data
+          if (personaje && personaje.data) this.personajes = personaje.data 
         })
     } catch (e) {
       console.log(e)
