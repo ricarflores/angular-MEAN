@@ -15,5 +15,13 @@ export class UserService {
   }
   Login(email:string,data:Usuario){
     return this._http.post(this.baseUrl+"/"+email+"/login",data)
+      .pipe(map((data:any)=>{
+        if(data && !data.error) {
+          if(localStorage.getItem("userData")==null)
+            localStorage.setItem("userData",JSON.stringify(data.data))
+          return data; 
+        }
+        return data;
+      }))
   }
 }

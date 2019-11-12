@@ -9,11 +9,11 @@
                 <h5 class="card-title">{{ price }}</h5>
             </div>
             <div class="col-md-6">
-                <img [src]="foto" class="card-img-top" alt="...">
+                <img [src]="foto | noImage" class="card-img-top" alt="...">
             </div>
         </div>
     </div>
 </div>
-<div class="alert alert-danger" role="alert" *ngIf="errorFlag">
+<div class="alert alert-danger" role="alert" *ngIf="!errorFlag">
     {{ response.error }} de <a href="/" class="alert-link">Personaje</a>. (Click to Return)
 </div>

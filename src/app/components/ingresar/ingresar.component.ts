@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router'
 import { FormBuilder, FormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Usuario } from './../../interfaces/usuarios';
 import { UserService }  from './../../services/user.service';
@@ -12,16 +13,16 @@ import { NgbAlertConfig } from '@ng-bootstrap/ng-bootstrap'
 
 export class IngresarComponent implements OnInit {
   private checkUsuarioForm;
-  private validate:boolean;
+  private validate:boolean = false;
   private errores =  [];
   @Input() flagRegistrer:boolean = false;
-  constructor(private userService:UserService, private formBuilder: FormBuilder) { 
+  constructor(private userService:UserService, private formBuilder: FormBuilder, private router:Router) { 
     this.checkUsuarioForm = this.formBuilder.group({
       email: new FormControl("", [Validators.required, Validators.email]),
       password: new FormControl("",Validators.required),
-      confirmPassword: new FormControl(""),
-      username:new FormControl(""),
-      userType:new FormControl(""),
+      confirmPassword: new FormControl("", Validators.required),
+      username:new FormControl("", Validators.required),
+      userType:new FormControl("",Validators.required),
       terminosCondiciones:new FormControl(false)
     });
     //console.log(this.checkUsuarioForm.valid)
@@ -30,13 +31,18 @@ export class IngresarComponent implements OnInit {
   ngOnInit() {
 
   }
+  checkInput(inputName:string){
+    const element = this.checkUsuarioForm.get(inputName)
+    //console.log({[inputName]: !element.pristine && !element.valid })
+    return (!element.pristine && !element.valid)
+  }
   addUser()
   {
     
     //console.log(this.checkUsuarioForm.controls);
     const { controls } = this.checkUsuarioForm
     this.errores = Object.keys(controls).map(obj => controls[obj]).filter(err=> err["status"] === "INVALID")
-    console.log(this.errores) 
+    console.log(this.errores)
     if(this.flagRegistrer)
     {
       console.log("user add")
@@ -64,15 +70,17 @@ export class IngresarComponent implements OnInit {
         password: this.checkUsuarioForm.value.password,
         userType: this.checkUsuarioForm.value.userType, 
       }
-      
+      console.log(this.errores)
       this.userService.Login(loginUser.email, loginUser)
         .subscribe(
-          (data) =>{ console.log(data)},
+          (data) =>
+          { 
+            this.router.navigate(['/'])
+          },
           (err) => {console.log(err)},
           () => { }
         )
     }
-    
-    
+    this.checkUsuarioForm.reset(); 
   }
 }

@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { PersonajeService } from "./../../services/personaje.service";
-import { Personaje } from "./../../interfaces/personaje";
+import { PersonajeService } from "../../services/personaje.service";
+import { Personaje } from "../../interfaces/personaje";
 import { Router } from '@angular/router'
 import { FormBuilder } from '@angular/forms';
 @Component({
-  selector: 'app-usuario',
-  templateUrl: './usuario.component.html',
+  selector: 'app-producto',
+  templateUrl: './producto.component.html',
   styles: []
 })
-export class UsuarioComponent implements OnInit {
+export class ProductoComponent implements OnInit {
   private personajes: Personaje[]
   private checkoutForm
   constructor(private personajeService: PersonajeService, private formBuilder: FormBuilder) {
-    console.log("constructor");
     this.personajeService.listPersonajes()
       .subscribe((personajes:any)=>{
         if(!personajes.error) this.personajes = personajes.data

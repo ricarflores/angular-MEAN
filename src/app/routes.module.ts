@@ -1,18 +1,19 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router';
-import { MainComponent } from "./components/main/main.component";
-import { DetalleComponent } from './components/detalle/detalle.component';
-import { IngresarComponent } from './components/ingresar/ingresar.component';
+import { MainComponent } from "./pages/main/main.component";
+import { DetalleComponent } from './pages/detalle/detalle.component';
 import { RegistroLoginComponent } from './components/registro-login/registro-login.component';
+import { UserAuthGuard } from './guards/user-auth.guard'
+import { PagesRoutesModule } from './pages/pagesroutes.module'
 const routes: Routes = [
-    {path:'',component:MainComponent},
-    {path:'detalles/:id',component:DetalleComponent},
-    {path:'ingresar', component: RegistroLoginComponent},
     {path:'**', redirectTo:'/'}
     
 ]
 @NgModule({
-    imports:[RouterModule.forRoot(routes)],
+    imports:[
+        RouterModule.forRoot(routes),
+        PagesRoutesModule
+    ],
     exports:[RouterModule]
 })
 

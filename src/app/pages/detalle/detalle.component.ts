@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router'
-import { Personaje } from "./../../interfaces/personaje";
-import { PersonajeService } from './../../services/personaje.service';
+import { Personaje } from "../../interfaces/personaje";
+import { PersonajeService } from '../../services/personaje.service';
 import { Response } from './../../interfaces/response';
 
 
