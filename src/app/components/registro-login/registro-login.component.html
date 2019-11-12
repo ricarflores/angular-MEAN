@@ -1,0 +1,13 @@
+<ngb-tabset type="pills">
+    <ngb-tab title="Iniciar Sesion">
+        <ng-template ngbTabContent>
+            <app-ingresar></app-ingresar>
+        </ng-template>
+    </ngb-tab>
+    <ngb-tab>
+        <ng-template ngbTabTitle>Registrase</ng-template>
+        <ng-template ngbTabContent>
+            <app-ingresar [flagRegistrer] = true></app-ingresar>
+        </ng-template>
+    </ngb-tab>
+</ngb-tabset>

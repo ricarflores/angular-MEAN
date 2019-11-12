@@ -1,31 +1,44 @@
+<ng-container *ngIf="!checkUsuarioForm.valid">
+    <li *ngFor="let error of errores">
+        <div class="alert alert-danger"  role="alert">
+            {{ error.errors | json }} 
+        </div>
+    </li>
+</ng-container>
+
+
 <form [formGroup]="checkUsuarioForm" (ngSubmit)="addUser(checkUsuarioForm.value)">
     <div class="form-group">
-        <label for="exampleInputEmail1">Nombre</label>
-        <input name="username" type="text" class="form-control" id="userName" formControlName="username"
-            placeholder="Nombre del usuario">
+        <label for="exampleInputPassword1">Correo</label>
+        <input name="email" type="email" class="form-control" id="Email" formControlName="email" placeholder="Correo">
     </div>
     <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
         <input name="password" type="password" class="form-control" id="passWord" formControlName="password"
-            placeholder="Password">
+            placeholder="Password" autocomplete="off">
     </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1">Repite el password</label>
-        <input name="confirmPassword" type="password" class="form-control" id="confirmPass" formControlName="confirmPassword"
-            placeholder="Confirmar Password">
+    <div class="form-group" *ngIf="flagRegistrer">
+        <label for="exampleInputPassword1">Confirmar password</label>
+        <input name="confirmPassword" type="password" class="form-control" id="confirmPass"
+            formControlName="confirmPassword" placeholder="Confirmar Password" autocomplete="off">
     </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1">Correo</label>
-        <input name="email" type="email" class="form-control" id="Email" formControlName="email"
-            placeholder="Correo">
+    <div class="form-group" *ngIf="flagRegistrer">
+        <label for="exampleInputEmail1">Nombre de Usuario</label>
+        <input name="username" type="text" class="form-control" id="userName" formControlName="username"
+            placeholder="Nombre del usuario">
     </div>
-    <div class="form-group">
+    <div class="form-group" *ngIf="flagRegistrer">
         <label for="exampleFormControlSelect1">Tipo de Usuario</label>
         <select class="form-control" id="Usertype" formControlName="userType">
-          <option value="user">User</option>
-          <option value="vendedor">Vendedor</option>
-          <option value="admin">admin</option>
+            <option value="user">Usuario</option>
+            <option value="vendedor">Vendedor</option>
         </select>
-      </div>
+    </div>
+    <div class="form-group" *ngIf="flagRegistrer">
+        <label class="btn-primary" ngbButtonLabel>
+            <input type="checkbox" formControlName="terminosCondiciones" ngbButton> Acepto los terminos y condiciones
+        </label>
+    </div>
+
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>

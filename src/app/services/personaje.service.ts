@@ -8,29 +8,7 @@ import { map } from 'rxjs/operators'
   providedIn: 'root'
 })
 export class PersonajeService {
-  private personajes : Personaje [] = [
-    {
-      id: "1",
-      nombre: "Tanjiro",
-      desc: "Personaje del anime Demon Slayer",
-      foto: "/assets/images/Tanjiro.webp",
-      price:50
-    },
-    {
-      id: "2",
-      nombre: "Nezuko",
-      desc: "Personaje del anime Demon Slayer",
-      foto: "/assets/images/nezuko.gif",
-      price:20
-    },
-    {
-      id: "3",
-      nombre: "Nezuko",
-      desc: "Personaje del anime Demon Slayer",
-      foto: "/assets/images/shinobu.gif",
-      price:50
-    }
-  ];
+  
   private baseUrl: string = "https://personajes.herokuapp.com/v1/personaje"
   constructor(private _http:HttpClient) {
   

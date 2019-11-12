@@ -13,4 +13,7 @@ export class UserService {
   addUser(data:Usuario){
       return this._http.post(this.baseUrl,data)
   }
+  Login(email:string,data:Usuario){
+    return this._http.post(this.baseUrl+"/"+email+"/login",data)
+  }
 }
