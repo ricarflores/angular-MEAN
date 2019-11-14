@@ -21,8 +21,8 @@ export class HeaderComponent implements OnInit {
     }
     else{
       
-      console.log(this.session)
-      console.log(typeof this.session)
+      //console.log(this.session)
+      //console.log(typeof this.session)
       
       this.sessionActive = true;
     }

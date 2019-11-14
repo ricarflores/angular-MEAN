@@ -10,12 +10,10 @@ export class ProductosDashboardComponent implements OnInit {
   private page = 1;
   private pageSize = 4;
   private collectionSize:number;
-  //private data:any;
-  //private header:string[];
-  @Input() data:any
-  @Input() header:any
+  @Input() data:any;
+  private header:any;
+  @Input() pagination:any;
   constructor(private personajeService: PersonajeService) {
-    console.log("constructor productos")
    }
 
   ngOnInit() {
@@ -27,12 +25,17 @@ export class ProductosDashboardComponent implements OnInit {
       (products:any) => {
         this.collectionSize = products.data.length;
         this.data = products.data.map((user,i)=>({id: i+1, ...user}))
-        this.header = ["#","Nombre","Precio","Foto","ID","Acciones"]
+        this.header = ["#","Nombre","Precio","Foto","Descripcion","Acciones"]
+        this.pagination={
+          page: this.page,
+          pageSize: this.pageSize,
+          collectionSize: this.collectionSize
+        }
         this.data = {
           data:this.data,
           keys:this.header
         }
-        console.log(this.data)
+        //console.log(this.data)
       },
       (err) =>{console.log(err)},
       () =>{}

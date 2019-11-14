@@ -10,18 +10,21 @@
             <td scope="row">{{ info.id }}</td>
             <th scope="row">{{ info.email || info.nombre }}</th>
             <td scope="row">{{ info.username || info.price }}</td>
-            <td scope="row">{{ info.userType || info.foto }}</td>
-            <td scope="row">{{ info.activate || info.id}}</td>
+            <td scope="row">
+                    <img *ngIf="info.foto" [src]="info.foto" class="mr-2" style="width: 60px">
+                {{ info.userType }}
+            </td>
+            <td scope="row">{{ info.activate || info.desc}}</td>
             <td scope="row">Actualizar | Eliminar</td>
         </tr>
     </tbody>
 </table>
 
 <div class="d-flex justify-content-between p-2">
-    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize">
+    <ngb-pagination [collectionSize]="pagination.collectionSize" [(page)]="pagination.page" [pageSize]="pagination.pageSize">
     </ngb-pagination>
 
-    <select class="custom-select" style="width: auto" [(ngModel)]="pageSize">
+    <select class="custom-select" style="width: auto" [(ngModel)]="pagination.pageSize">
         <option [ngValue]="2">2 items per page</option>
         <option [ngValue]="4">4 items per page</option>
         <option [ngValue]="6">6 items per page</option>
