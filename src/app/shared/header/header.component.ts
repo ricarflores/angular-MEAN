@@ -10,7 +10,7 @@ import { Usuario } from './../../interfaces/usuarios';
 export class HeaderComponent implements OnInit {
   private sessionActive:boolean;
   private session:Usuario;
-  constructor(private userService:UserService) { }
+  constructor(private userService:UserService, private router:Router) { }
 
   ngOnInit() 
   {
@@ -31,5 +31,5 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem("userData");
     this.sessionActive = false;
   }
-
+  
 }

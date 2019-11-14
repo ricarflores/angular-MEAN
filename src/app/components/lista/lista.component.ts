@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router' 
 
 
@@ -25,7 +25,8 @@ export class ListaComponent implements OnInit
   private collectionSize;
   private pageSize;
   @Input() pagination:any;
-  constructor() 
+  @Output("eliminarData") sendId:EventEmitter<string> = new EventEmitter();
+  constructor(private userServices: UserService) 
   {
     
   }
@@ -36,10 +37,14 @@ export class ListaComponent implements OnInit
     
   }
   setData(){
-    console.log(this.pagination)
     this.keys = this.data.keys
-    this.elementos = this.data.data
+    this.elementos = this.data.data;
+    console.log(this.elementos)
     
   }
+  eliminarData(id:string){
+    this.sendId.emit(id)
+  }
+  
 
 }

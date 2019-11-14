@@ -46,4 +46,7 @@ export class UserDashboardComponent implements OnInit {
         () => {}
     )
   }
+  eliminarData(id){
+    console.log(id)
+  }
 }

@@ -9,7 +9,6 @@ import { DetalleComponent } from './detalle/detalle.component'
 import { CarritoComponent } from './carrito/carrito.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { NotfoundpageComponent } from './notfoundpage/notfoundpage.component';
-//import { NoImagePipe } from './../pipes/no-image.pipe'
 import { PagesComponent } from './pages.component';
 import { PagesRoutesModule } from './pagesroutes.module'
 

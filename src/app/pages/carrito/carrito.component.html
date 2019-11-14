@@ -1,1 +1,42 @@
-<p>carrito works!</p>
+<table class="table table-striped" *ngIf="carritoValue">
+    <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Desc</th>
+            <th scope="col">Foto</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Total en Carrito</th>
+            <th scope="col">Eliniar del Carrito</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of data">
+            <th scope="row">{{ item.nombre }}</th>
+            <th scope="row">{{ item.desc }}</th>
+            <td>
+                <img [src]="item.foto" class="mr-2" style="width: 20px">
+            </td>
+            <td>{{ item.precio }}</td>
+            <td>{{ item.compraTotal }}</td>
+            <td>
+                <button class="btn btn-outline-danger" (click)="eliminarCarrito(item.nombre)">Eliminar del Carrito</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="alert alert-danger" role="alert" *ngIf="!carritoValue">
+    Sin elementos en el Carrito
+</div>
+
+
+<!-- <div class="d-flex justify-content-between p-2">
+  <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize">
+  </ngb-pagination>
+
+  <select class="custom-select" style="width: auto" [(ngModel)]="pageSize">
+    <option [ngValue]="2">2 items per page</option>
+    <option [ngValue]="4">4 items per page</option>
+    <option [ngValue]="6">6 items per page</option>
+  </select>
+</div> -->

@@ -1,8 +1,6 @@
 //Modulos
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common'
-import { ComponentsModule } from './../components/components.module';
-import { NgbPagination, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router'
 //componentes
 import { SidebarComponent } from './sidebar/sidebar.component'

@@ -1,1 +1,1 @@
-<app-lista *ngIf=" (data && pagination)" [data]="data" [pagination]="pagination"></app-lista>
+<app-lista (eliminarData)="eliminarData($event)" *ngIf=" (data && pagination)" [data]="data" [pagination]="pagination"></app-lista>

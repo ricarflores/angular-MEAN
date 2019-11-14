@@ -8,10 +8,11 @@
         <div class="navbar-nav">
             <a class="nav-item nav-link" [routerLink]="['']">Inicio</a>
             <a class="nav-item nav-link" [routerLink]="['registro']" *ngIf="!sessionActive">Registro/Login</a>
+            <a class="nav-item nav-link" [routerLink]="['dashboard', 'users']" *ngIf="sessionActive">DashBoard</a>
+            <div *ngIf="sessionActive">
+                <a  class="nav-item nav-link" [routerLink]="['carrito']" class="btn btn-warning">Ver Carrito</a>
+            </div>
         </div>
-    </div>
-    <div *ngIf="sessionActive">
-        <button class="btn btn-dark">Ver Carrito</button>
     </div>
     <div *ngIf="sessionActive">
         <button class="btn btn-primary" (click)="closeSession()">Log Out</button>

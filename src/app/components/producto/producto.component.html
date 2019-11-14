@@ -4,7 +4,8 @@
         <h5 class="card-title">{{personaje.nombre}}</h5>
         <p class="card-text">{{personaje.desc}}</p>
         <a [routerLink]="['detalles', personaje._id]" class="btn btn-primary">Detalles</a>
-        <button (click)="deletePersonaje(personaje._id)" class="btn btn-danger">Borrar</button>
-        <button class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">Editar</button>
+        <a (click)="addToCarrito(personaje)" class="btn btn-warning">Añadir al carrito</a>
+        <!-- <button (click)="deletePersonaje(personaje._id)" class="btn btn-danger">Borrar</button> -->
+        <!-- <button class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">Editar</button> -->
     </div>
 </div>

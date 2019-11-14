@@ -29,6 +29,43 @@ export class ProductoComponent implements OnInit {
         ( ) => {}
       )
   }
-  
+  addToCarrito(personaje:any){
+    let itemToCarrito = 
+    [
+      {
+      nombre:personaje.nombre,
+      desc: personaje.desc,
+      foto: personaje.foto,
+      precio : personaje.price,
+      compraTotal: 1,
+      }
+    ]
+    if(localStorage.getItem("Carrito")==null)
+    {
+      if(JSON.parse(localStorage.getItem("Carrito")).length === 0)
+        localStorage.removeItem("Carrito")
+      
+      localStorage.setItem("Carrito",JSON.stringify(itemToCarrito));
+    }
+    else{
+      let items = JSON.parse(localStorage.getItem("Carrito"))
+      console.log (items)
+      let find = false;
+      for(let i =0; i< items.length; i++)
+      {
+        if(items[i].nombre === itemToCarrito[0].nombre)
+        {
+          items[i].compraTotal = parseInt(items[0].compraTotal,10) + 1
+          find = true
+        }
+      }
 
+      if(find==false){
+        items.push(itemToCarrito[0])
+      }
+      localStorage.removeItem("Carrito");
+      localStorage.setItem("Carrito",JSON.stringify(items))
+      
+    }
+  }
 }

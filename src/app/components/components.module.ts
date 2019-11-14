@@ -1,7 +1,7 @@
 //Modulos
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormsModule, FormControl} from '@angular/forms';
+import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NoImagePipe } from './../pipes/no-image.pipe'
 import { RouterModule } from '@angular/router'
@@ -12,6 +12,7 @@ import { ListaComponent } from './lista/lista.component';
 import { ModalComponent } from './modal/modal.component';
 import { RegistroLoginComponent } from './registro-login/registro-login.component';
 import { ProductoComponent } from './producto/producto.component';
+import { ControlesComponent } from './controles/controles.component'
 
 @NgModule({
     declarations: 
@@ -22,7 +23,8 @@ import { ProductoComponent } from './producto/producto.component';
         ModalComponent,
         RegistroLoginComponent,
         ProductoComponent,
-        NoImagePipe
+        NoImagePipe,
+        ControlesComponent
         
     ],
     imports: [
@@ -42,7 +44,8 @@ import { ProductoComponent } from './producto/producto.component';
         ModalComponent,
         RegistroLoginComponent,
         ProductoComponent,
-        NoImagePipe
+        NoImagePipe,
+        ControlesComponent
     ],
     providers: [],
     bootstrap: []

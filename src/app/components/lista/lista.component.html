@@ -1,3 +1,6 @@
+<div class="row">
+    <app-controles></app-controles>
+</div>
 
 <table class="table table-striped">
     <thead>
@@ -14,8 +17,11 @@
                     <img *ngIf="info.foto" [src]="info.foto" class="mr-2" style="width: 60px">
                 {{ info.userType }}
             </td>
-            <td scope="row">{{ info.activate || info.desc}}</td>
-            <td scope="row">Actualizar | Eliminar</td>
+            <td scope="row">{{ info.activate || info.desc }}</td>
+            <td scope="row">
+                <button class="btn btn-danger" (click)="eliminarData(info._id)">Eliminar</button>
+                <button class="btn btn-warning">Actualizar</button>
+            </td>
         </tr>
     </tbody>
 </table>
