@@ -13,6 +13,14 @@ export class UserService {
   addUser(data:Usuario){
       return this._http.post(this.baseUrl,data)
   }
+  getUsers(){
+    return this._http.get(this.baseUrl)
+      .pipe(map((data:any)=>{
+        if(data){
+          return data;
+        }
+      }))
+  }
   Login(email:string,data:Usuario){
     return this._http.post(this.baseUrl+"/"+email+"/login",data)
       .pipe(map((data:any)=>{

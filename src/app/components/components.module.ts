@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule, FormControl} from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NoImagePipe } from './../pipes/no-image.pipe'
+import { RouterModule } from '@angular/router'
 //components 
 import { FormComponent }  from './form/form.component';
 import { IngresarComponent } from './ingresar/ingresar.component';
@@ -28,7 +29,8 @@ import { ProductoComponent } from './producto/producto.component';
         CommonModule,
         ReactiveFormsModule,
         FormsModule,
-        NgbModule
+        NgbModule,
+        RouterModule,
     ],
     exports:[
         CommonModule,
@@ -40,6 +42,7 @@ import { ProductoComponent } from './producto/producto.component';
         ModalComponent,
         RegistroLoginComponent,
         ProductoComponent,
+        NoImagePipe
     ],
     providers: [],
     bootstrap: []

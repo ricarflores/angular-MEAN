@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="z-index: 10; ">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -7,9 +7,11 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
             <a class="nav-item nav-link" [routerLink]="['']">Inicio</a>
-            <a class="nav-item nav-link" [routerLink]="['detalles']">Detalles</a>
-            <a class="nav-item nav-link" [routerLink]="['ingresar']" *ngIf="!sessionActive">Registro/Login</a>
+            <a class="nav-item nav-link" [routerLink]="['registro']" *ngIf="!sessionActive">Registro/Login</a>
         </div>
+    </div>
+    <div *ngIf="sessionActive">
+        <button class="btn btn-dark">Ver Carrito</button>
     </div>
     <div *ngIf="sessionActive">
         <button class="btn btn-primary" (click)="closeSession()">Log Out</button>

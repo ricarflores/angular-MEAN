@@ -75,7 +75,7 @@ export class IngresarComponent implements OnInit {
         .subscribe(
           (data) =>
           { 
-            this.router.navigate(['/'])
+            this.router.navigate(['dashboard','users'])
           },
           (err) => {console.log(err)},
           () => { }

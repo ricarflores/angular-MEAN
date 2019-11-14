@@ -2,13 +2,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common'
 import { ComponentsModule } from './../components/components.module';
-
+import { SharedModule } from './../shared/shared.module';
 //pages
 import { MainComponent } from './main/main.component';
 import { DetalleComponent } from './detalle/detalle.component'
 import { CarritoComponent } from './carrito/carrito.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardComponent } from '../dashboard/dashboard.component';
 import { NotfoundpageComponent } from './notfoundpage/notfoundpage.component';
+//import { NoImagePipe } from './../pipes/no-image.pipe'
 import { PagesComponent } from './pages.component';
 import { PagesRoutesModule } from './pagesroutes.module'
 
@@ -19,12 +20,13 @@ import { PagesRoutesModule } from './pagesroutes.module'
         CarritoComponent,
         DashboardComponent,
         NotfoundpageComponent,
-        PagesComponent
+        PagesComponent,
     ],
     imports: [
         CommonModule,
         ComponentsModule,
-        PagesRoutesModule
+        PagesRoutesModule,
+        SharedModule
     ],
     exports:[
         DetalleComponent,
